@@ -40,6 +40,7 @@ while True:
     personId = 1;
     bikeId = 2;
     carId = 3;
+    busId = 6;
 
     minAccuracy = 100;
 
@@ -53,7 +54,7 @@ while True:
             minAccuracy = min(minAccuracy, detection.Confidence*100);        
             bCount += 1
 
-        if detection.ClassID == carId:
+        if detection.ClassID == carId or detection.ClassID == busId:
             minAccuracy = min(minAccuracy, detection.Confidence*100);        
             cCount += 1
         
@@ -70,5 +71,5 @@ while True:
     if not input.IsStreaming() or not output.IsStreaming():   
             break
         
-print("there are " + str(pCount) + " pedestrians, " + str(cCount) + " cars, and " + str(bCount) + " bikes in your field of vision. This is with a mininum of " + str(minAccuracy) + "% confidence.")
+print("there are " + str(pCount) + " pedestrians, " + str(cCount) + " automobiles, and " + str(bCount) + " bikes in your field of vision. This is with a mininum of " + str(minAccuracy) + "% confidence.")
 
